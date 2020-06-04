@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20181121027</title>
+</head>
+<body>
+    <h1>20181121027</h1>
+    <h2>Kadir ÇANKAYA</h2>
+    <div class="problem_content" role="problem">
+        <p>If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.</p>
+        <p>If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used? </p>
+        <br><p class="note"><b>NOTE:</b> Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. <br> The use of "and" when writing out numbers is in compliance with British usage.</p>
+     </div>
+    <script>
+    s1 = ['', 'one', 'two', 'three', 'four','five', 'six', 'seven', 'eight', 'nine',
+        'ten', 'eleven', 'twelve', 'thirteen', 'fourteen','fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+  s2 = ['', '', 'twenty', 'thirty', 'forty', 'fifty','sixty', 'seventy', 'eighty', 'ninety'];  
+  ans = 0;  
+  for (i = 1; i <= 1000; i++) {
+    if (i >= 1000) {
+      ans += s1[Math.floor(i % 10000 / 1000)].length;
+      ans += 'thousand'.length;
+    }
+    if (i % 1000 >= 100) {
+      ans += s1[Math.floor(i % 1000 / 100)].length;
+      ans += 'hundred'.length;
+    }
+    if (i >= 100 && i % 100 != 0) {
+      ans += 'and'.length;
+    }
+    if (i % 100 > 0 && i % 100 < 20) {
+      ans += s1[i % 100].length;
+    }
+    if (i % 100 >= 20) {
+      ans += s2[Math.floor(i % 100 / 10)].length;
+      ans += s1[i % 10].length;
+    }
+  }  
+  document.write('Result: ', ans);
+  </script>
+</body>
+</html>

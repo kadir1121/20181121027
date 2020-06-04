@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20181121027</title>
+</head>
+<body>
+    <h1>20181121027</h1>
+    <h2>Kadir ÇANKAYA</h2>
+    <div>        
+        <p><strong>Example 1:</strong></p>        
+        <pre><strong>Input:</strong>
+        beginWord = "hit",
+        endWord = "cog",
+        wordList = ["hot","dot","dog","lot","log","cog"]        
+        <strong>Output: </strong>5        
+        <strong>Explanation:</strong> As one shortest transformation is "hit" -&gt; "hot" -&gt; "dot" -&gt; "dog" -&gt; "cog",
+        return its length 5.
+        </pre><p><strong>Example 2:</strong></p> <pre><strong>Input:</strong>
+        beginWord = "hit"
+        endWord = "cog"
+        wordList = ["hot","dot","dog","lot","log"]        
+        <strong>Output:</strong>&nbsp;0
+        <strong>Explanation:</strong>&nbsp;The endWord "cog" is not in wordList, therefore no possible<strong>&nbsp;</strong>transformation.
+        </pre> <ul></ul>
+        </div>
+<script>
+    const ladderLength = function(beginWord, endWord, wordList) {
+  const list = new Set(wordList)
+  if (!list.has(endWord)) return 0
+  let one = new Set([beginWord])
+  let two = new Set([endWord])
+  let step = 1
+  while (one.size && two.size) {
+    let temp = new Set()
+    if (two.size < one.size) [one, two] = [two, one]
+    for (const word of one) {
+      for (let i = 0; i < word.length; i++) {
+        for (let j = 0; j < 26; j++) {
+          const candidate =
+            word.slice(0, i) + String.fromCharCode(97 + j) + word.slice(i + 1)
+          if (two.has(candidate)) return step + 1
+          if (!list.has(candidate)) continue
+          temp.add(candidate)
+          list.delete(candidate)
+        }
+      }
+    }
+    ;[one, temp] = [temp, one]
+    step++
+  }
+  return 0
+}
+document.write("Result : "+ladderLength("hit","cog",["hot","dot","dog","lot","log","cog"]));
+</script>
+</body>
+</html>

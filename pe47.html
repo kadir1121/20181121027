@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20181121027</title>
+</head>
+<body>
+    <h1>20181121027</h1>
+    <h2>Kadir ÇANKAYA</h2>
+    <div class="problem_content" role="problem">
+        <p>The first two consecutive numbers to have two distinct prime factors are:</p>
+        <p style="margin-left:100px;">14 = 2 × 7<br>15 = 3 × 5</p>
+        <p>The first three consecutive numbers to have three distinct prime factors are:</p>
+        <p style="margin-left:100px;">644 = 2² × 7 × 23<br>645 = 3 × 5 × 43<br>646 = 2 × 17 × 19.</p>
+        <p>Find the first four consecutive integers to have four distinct prime factors each. What is the first of these numbers?</p>        
+        </div>
+        <script>
+            function t(x) {
+  function f(y) {
+    if (x % y == 0) {
+      do {
+        x = x / y;
+      } while (x % y == 0);
+      s++;    }
+  }
+  var s = 0;
+  f(2);
+  f(3);
+  var n = 5;
+  for (;;) {
+    if (n * n > x) break;
+    f(n);
+    n += 2;
+    if (n * n > x) break;
+    f(n);
+    n += 4;
+  }
+  if (x != 1) {
+    s++;  }
+  return s;}
+ans = 2 * 3 * 5 * 7;
+for (;;) {
+  if (t(ans + 3) != 4) {
+    ans += 4;
+    continue;  }
+  if (t(ans + 2) != 4) {
+    ans += 3;
+    continue;  }
+  if (t(ans + 1) != 4) {
+    ans += 2;
+    continue;  }
+  if (t(ans) != 4) {
+    ans += 1;
+    continue;  }
+  break;}
+document.write('Result : ', ans);
+        </script>
+</body>
+</html>
