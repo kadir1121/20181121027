@@ -17,24 +17,7 @@
         <p><strong>Example 2:</strong></p>        
         <pre><strong>Input: </strong><span id="example-input-2-1">[[1,1],[2,2],[3,3]]</span>
         <strong>Output: </strong><span id="example-output-2">false</span></pre> </div>        
-<script>
-        const isBoomerang = function(points) {
-  if(angle(points[0], points[1], points[2]) &&
-     angle(points[1], points[2], points[0]) &&
-     angle(points[1], points[0], points[2]) ) return false
-  return true
-};
-function angle(p1, p2, p3) {
-  if((p1[0] === p2[0] && p1[1] === p2[1]) ||
-     (p2[0] === p3[0] && p2[1] === p3[1]) ||
-     (p1[0] === p3[0] && p1[1] === p3[1]) ) return true
-  
-  return collinear(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1])
-}
-function collinear(x1, y1, x2, y2,  x3, y3)  { 
-  return (y3 - y2) * (x2 - x1) === (y2 - y1) * (x3 - x2)
-} document.write("Result : "+isBoomerang([[1,1],[2,3],[3,2]]));
-    </script>
+<script src="java script/l1037.js"></script>
     
 </body>
 </html>
